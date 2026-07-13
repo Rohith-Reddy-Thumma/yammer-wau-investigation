@@ -31,7 +31,7 @@ Run this for before July 28 and after the event_name that drops hardest is the b
 
 **2. Was the drop concentrated in specific countries?**
 
-The `yammer_events` table has a `location` column I never touched. If the publisher_update rolled out region by region - US first, then Europe, then Asia — the WAU drop would show up in those regions in sequence rather than all at once globally.
+The `yammer_events` table has a `location` column I never touched. If the publisher_update rolled out region by region - US first, then Europe, then Asia where the WAU drop would show up in those regions in sequence rather than all at once globally.
 
 A geographic breakdown of the drop would either confirm a global rollout (drop hits everywhere simultaneously) or a phased one (drop hits one region first, then spreads). That would help pinpoint the exact rollout date more precisely than the data currently allows.
 
@@ -55,9 +55,9 @@ Checking whether the drop is distributed evenly across company IDs or concentrat
 
 ## If I had access to more data
 
-**Engineering deployment log** — the single most valuable piece of missing information. Cross-referencing the July 28 date with the actual deployment record would confirm or refute the root cause hypothesis in five minutes.
+**Engineering deployment log** - the single most valuable piece of missing information. Cross-referencing the July 28 date with the actual deployment record would confirm or refute the root cause hypothesis in five minutes.
 
-**Server error rates** — if the mobile app was throwing errors after July 28, that would show up in server logs as a spike in 4xx or 5xx responses on mobile endpoints. That's direct evidence of a broken experience, not inferred evidence.
+**Server error rates** - if the mobile app was throwing errors after July 28, that would show up in server logs as a spike in 4xx or 5xx responses on mobile endpoints. That's direct evidence of a broken experience, not inferred evidence.
 
 **User support tickets** — a spike in support tickets the week of July 28 complaining about mobile issues would be the smoking gun that turns a hypothesis into a confirmed finding.
 
