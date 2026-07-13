@@ -30,9 +30,9 @@ The analysis doesn't separate seasonal effects from the feature rollout effect. 
 
 ## 4. Correlation between email clickthroughs and mobile experience
 
-The email analysis shows clickthroughs dropped 32% while opens stayed flat. The interpretation — that users clicked and hit a broken mobile experience is logical but not directly proven. An alternative explanation is that the email content changed around July 28 and became less compelling, causing users to opt out of clicking without ever landing on the app.
+The email analysis shows clickthroughs dropped 32% while opens stayed flat. The interpretation that users clicked and hit a broken mobile experience is logical but not directly proven. An alternative explanation is that the email content changed around July 28 and became less compelling, causing users to opt out of clicking without ever landing on the app.
 
-Distinguishing between "broken landing experience" and "less compelling email content" would require click-to-session data — did users who clicked actually open the app, or did the link fail silently?
+Distinguishing between "broken landing experience" and "less compelling email content" would require click-to-session data, did users who clicked actually open the app, or did the link fail silently?
 
 ---
 
