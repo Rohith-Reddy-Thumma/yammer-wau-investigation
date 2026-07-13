@@ -89,7 +89,7 @@ The events table has a `location` column I never touched. Did the publisher_upda
 
 **3. Confirm the rollout date precisely**
 
-Everything in this investigation points to July 28 as the date the publisher_update shipped to all users. But that's inferred from the data — the WAU drop starts that week, the experiment ended around that time. To confirm it I'd need the engineering deployment log. Without that, the root cause is a well-supported hypothesis, not a confirmed fact.
+Everything in this investigation points to July 28 as the date the publisher_update shipped to all users. But that's inferred from the data, the WAU drop starts that week, the experiment ended around that time. To confirm it I'd need the engineering deployment log. Without that, the root cause is a well-supported hypothesis, not a confirmed fact.
 
 ---
 
