@@ -24,7 +24,7 @@ Adding those two date filters cut the query time significantly. The lesson: push
 
 ---
 
-## The device bucketing — I'd do this differently
+## The device bucketing I'd do this differently
 
 `02_device_analysis.sql` has a CASE WHEN block that lists every single device by name. It works, but it's brittle, if a new device appears in the data that isn't in the list, it silently gets dropped into NULL rather than being counted. And it's long. Reading that query is painful.
 
