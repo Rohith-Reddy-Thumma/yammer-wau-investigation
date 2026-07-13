@@ -6,9 +6,9 @@ The investigation answered the CEO's question. These are the questions I'd want 
 
 **1. Which specific actions did mobile users stop doing?**
 
-The device analysis shows mobile users dropped off but doesn't show *what* they stopped doing. The `yammer_events` table has an `event_name` column — login, like_message, send_message, search_run, view_inbox that I never broke down by device.
+The device analysis shows mobile users dropped off but doesn't show *what* they stopped doing. The `yammer_events` table has an `event_name` column - login, like_message, send_message, search_run, view_inbox that I never broke down by device.
 
-Did mobile users stop logging in entirely? Or did they log in but stop posting? That distinction matters. If they stopped logging in, the entry point is broken — probably the email deep link. If they logged in but stopped posting, the publisher feature itself is broken.
+Did mobile users stop logging in entirely? Or did they log in but stop posting? That distinction matters. If they stopped logging in, the entry point is broken - probably the email deep link. If they logged in but stopped posting, the publisher feature itself is broken.
 
 ```sql
 SELECT
