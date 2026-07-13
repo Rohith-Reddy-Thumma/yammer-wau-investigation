@@ -1,4 +1,4 @@
-# Yammer WAU Drop — Root Cause Investigation
+# Yammer WAU Drop - Root Cause Investigation
 
 ![SQL](https://img.shields.io/badge/SQL-PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)
 ![Mode](https://img.shields.io/badge/Tool-Mode%20Analytics-orange?style=flat)
@@ -14,7 +14,7 @@ Five queries. Four converging findings. One confirmed root cause.
 
 ## What I found
 
-WAU peaked at **1,443** on July 28 and dropped to **1,194** four weeks later — a loss of 249 users, or about 17%. The drop wasn't gradual. It was sharp. Something specific happened.
+WAU peaked at **1,443** on July 28 and dropped to **1,194** four weeks later - a loss of 249 users, or about 17%. The drop wasn't gradual. It was sharp. Something specific happened.
 
 ![WAU Trend](screenshots/wau_trend.png)
 
@@ -26,7 +26,7 @@ First thing I checked: are we losing users everywhere, or just on certain device
 
 ![Device Breakdown](screenshots/device_breakdown.png)
 
-Computers barely moved — down about 9%. Phones dropped 25%. Tablets dropped 38%. Desktop users were completely fine. This wasn't a product-wide problem. It was a mobile problem.
+Computers barely moved down about 9%. Phones dropped 25%. Tablets dropped 38%. Desktop users were completely fine. This wasn't a product-wide problem. It was a mobile problem.
 
 ---
 
@@ -36,7 +36,7 @@ Knowing it was mobile still left a big question open: were these long-time users
 
 ![New vs Existing](screenshots/new_vs_existing.png)
 
-New users were actually growing — up 4% over the same period. Existing users collapsed 38%. Whatever broke, it only affected people who'd been using Yammer for a while. That ruled out bad press, marketing problems, and broken onboarding all at once.
+New users were actually growing up 4% over the same period. Existing users collapsed 38%. Whatever broke, it only affected people who'd been using Yammer for a while. That ruled out bad press, marketing problems, and broken onboarding all at once.
 
 ---
 
@@ -58,7 +58,7 @@ The last piece was the experiments table. Yammer had been running an A/B test ca
 
 ![Experiments](screenshots/experiments.png)
 
-The test group collapsed. By the end of June, test group users were at just 28% of control group engagement. The `publisher_update` feature was clearly hurting the users who received it — and when Yammer rolled it out to everyone around July 28, the WAU drop followed immediately.
+The test group collapsed. By the end of June, test group users were at just 28% of control group engagement. The `publisher_update` feature was clearly hurting the users who received it and when Yammer rolled it out to everyone around July 28, the WAU drop followed immediately.
 
 ---
 
@@ -71,7 +71,7 @@ Mobile users dropped 2-4x harder than desktop users
 
 Existing users fell 38% while new users grew 4%
 
-Email clickthroughs collapsed 32% — opens stayed flat
+Email clickthroughs collapsed 32% - opens stayed flat
 
 The publisher_update A/B test showed test users at 28%
 of control engagement — rolled out to 100% on July 28
