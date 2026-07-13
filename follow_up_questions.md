@@ -59,6 +59,6 @@ Checking whether the drop is distributed evenly across company IDs or concentrat
 
 **Server error rates** - if the mobile app was throwing errors after July 28, that would show up in server logs as a spike in 4xx or 5xx responses on mobile endpoints. That's direct evidence of a broken experience, not inferred evidence.
 
-**User support tickets** — a spike in support tickets the week of July 28 complaining about mobile issues would be the smoking gun that turns a hypothesis into a confirmed finding.
+**User support tickets** - a spike in support tickets the week of July 28 complaining about mobile issues would be the smoking gun that turns a hypothesis into a confirmed finding.
 
-**A/B test metadata** — the experiments table shows what happened during the test but not what the publisher_update feature actually changed. Was it the post composer? The feed algorithm? The notification system? Knowing what the feature did would make the mechanism of the drop much clearer.
+**A/B test metadata** - the experiments table shows what happened during the test but not what the publisher_update feature actually changed. Was it the post composer? The feed algorithm? The notification system? Knowing what the feature did would make the mechanism of the drop much clearer.
