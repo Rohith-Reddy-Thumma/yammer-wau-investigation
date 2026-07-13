@@ -106,4 +106,4 @@ Every query here was designed to rule something out:
 
 By the time you get to query 5 you're not guessing anymore. You're confirming.
 
-That's the mental model I'd bring to any investigation — start broad, eliminate fast, go deep on whatever survives.
+That's the mental model I'd bring to any investigation - start broad, eliminate fast, go deep on whatever survives.
