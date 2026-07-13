@@ -1,6 +1,6 @@
-# Analyst Notes — What I Learned Running This Investigation
+# Analyst Notes - What I Learned Running This Investigation
 
-These are my honest notes from working through this investigation. Not a summary of findings — that's in the README. This is the stuff that doesn't make it into a clean write-up.
+These are my honest notes from working through this investigation. Not a summary of findings that's in the README. This is the stuff that doesn't make it into a clean write-up.
 
 ---
 
@@ -8,7 +8,7 @@ These are my honest notes from working through this investigation. Not a summary
 
 The JOIN query in `03_new_vs_existing_users.sql` was the most time-consuming step by far. Joining `yammer_events` (~90,000 rows) against `yammer_users` (~19,000 rows) without a date filter just sat there. First attempt timed out entirely.
 
-The fix was obvious in hindsight — filter the events table down to the relevant date range *before* the join, not after:
+The fix was obvious in hindsight and filter the events table down to the relevant date range *before* the join, not after:
 
 ```sql
 -- slow version: joins everything then filters
@@ -26,7 +26,7 @@ Adding those two date filters cut the query time significantly. The lesson: push
 
 ## The device bucketing — I'd do this differently
 
-`02_device_analysis.sql` has a CASE WHEN block that lists every single device by name. It works, but it's brittle — if a new device appears in the data that isn't in the list, it silently gets dropped into NULL rather than being counted. And it's long. Reading that query is painful.
+`02_device_analysis.sql` has a CASE WHEN block that lists every single device by name. It works, but it's brittle, if a new device appears in the data that isn't in the list, it silently gets dropped into NULL rather than being counted. And it's long. Reading that query is painful.
 
 A cleaner approach would be pattern matching:
 
@@ -48,7 +48,7 @@ CASE
 END
 ```
 
-Or better — a separate device lookup table that maps device names to categories. Then the CASE WHEN disappears entirely and you just do a join. That approach scales. The CASE WHEN approach doesn't.
+Or better, a separate device lookup table that maps device names to categories. Then the CASE WHEN disappears entirely and you just do a join. That approach scales. The CASE WHEN approach doesn't.
 
 The current version in the repo is explicit and readable for anyone reviewing the code. But in a production environment I'd push for the lookup table.
 
@@ -58,11 +58,11 @@ The current version in the repo is explicit and readable for anyone reviewing th
 
 Query 3 was the turning point.
 
-I went into this expecting to find a new user acquisition problem — that's usually what drives WAU drops at SaaS companies. Fewer people signing up means fewer active users downstream. It's the most common answer.
+I went into this expecting to find a new user acquisition problem that's usually what drives WAU drops at SaaS companies. Fewer people signing up means fewer active users downstream. It's the most common answer.
 
-When the results came back showing existing users at 446 and new users at 748 by August 25 — with new users still growing — I had to stop and reread it. That's not a typical pattern. Something was actively breaking the experience for people who already knew and used the product, while simultaneously not affecting anyone who was just discovering it.
+When the results came back showing existing users at 446 and new users at 748 by August 25 with new users still growing, I had to stop and reread it. That's not a typical pattern. Something was actively breaking the experience for people who already knew and used the product, while simultaneously not affecting anyone who was just discovering it.
 
-That narrowed the suspect list immediately. Broken onboarding — ruled out. Bad marketing — ruled out. Bad press — ruled out. Whatever this was, it only hit people with established usage habits. That's when I started thinking about the email re-engagement loop and eventually the A/B test.
+That narrowed the suspect list immediately. Broken onboarding is ruled out. Bad marketing is ruled out. Bad press is ruled out. Whatever this was, it only hit people with established usage habits. That's when I started thinking about the email re-engagement loop and eventually the A/B test.
 
 ---
 
@@ -70,7 +70,7 @@ That narrowed the suspect list immediately. Broken onboarding — ruled out. Bad
 
 **1. Break down mobile event types after July 28**
 
-The device analysis shows mobile users dropped off — but it doesn't show *what* they stopped doing. Did they stop logging in entirely? Stop posting? Stop clicking search? A breakdown by `event_name` filtered to mobile devices after July 28 would tell you exactly which feature broke. That's the query I'd run next.
+The device analysis shows mobile users dropped off but it doesn't show *what* they stopped doing. Did they stop logging in entirely? Stop posting? Stop clicking search? A breakdown by `event_name` filtered to mobile devices after July 28 would tell you exactly which feature broke. That's the query I'd run next.
 
 ```sql
 SELECT
