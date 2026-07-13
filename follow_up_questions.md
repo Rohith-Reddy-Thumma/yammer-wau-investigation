@@ -4,11 +4,9 @@ The investigation answered the CEO's question. These are the questions I'd want 
 
 ---
 
-## If I had two more days
-
 **1. Which specific actions did mobile users stop doing?**
 
-The device analysis shows mobile users dropped off but doesn't show *what* they stopped doing. The `yammer_events` table has an `event_name` column — login, like_message, send_message, search_run, view_inbox — that I never broke down by device.
+The device analysis shows mobile users dropped off but doesn't show *what* they stopped doing. The `yammer_events` table has an `event_name` column — login, like_message, send_message, search_run, view_inbox that I never broke down by device.
 
 Did mobile users stop logging in entirely? Or did they log in but stop posting? That distinction matters. If they stopped logging in, the entry point is broken — probably the email deep link. If they logged in but stopped posting, the publisher feature itself is broken.
 
@@ -27,13 +25,13 @@ GROUP BY event_name
 ORDER BY users_before DESC
 ```
 
-Run this for before July 28 and after — the event_name that drops hardest is the broken feature.
+Run this for before July 28 and after the event_name that drops hardest is the broken feature.
 
 ---
 
 **2. Was the drop concentrated in specific countries?**
 
-The `yammer_events` table has a `location` column I never touched. If the publisher_update rolled out region by region — US first, then Europe, then Asia — the WAU drop would show up in those regions in sequence rather than all at once globally.
+The `yammer_events` table has a `location` column I never touched. If the publisher_update rolled out region by region - US first, then Europe, then Asia — the WAU drop would show up in those regions in sequence rather than all at once globally.
 
 A geographic breakdown of the drop would either confirm a global rollout (drop hits everywhere simultaneously) or a phased one (drop hits one region first, then spreads). That would help pinpoint the exact rollout date more precisely than the data currently allows.
 
@@ -43,13 +41,13 @@ A geographic breakdown of the drop would either confirm a global rollout (drop h
 
 The data ends August 25. The analysis identifies the problem but doesn't show what happened next. Did Yammer roll back publisher_update? Did WAU recover in September? Did existing users come back or did Yammer lose them permanently?
 
-A 90-day recovery analysis would be the natural follow-up — and would show whether the re-engagement campaign recommendation from the README actually worked.
+A 90-day recovery analysis would be the natural follow-up and would show whether the re-engagement campaign recommendation from the README actually worked.
 
 ---
 
 **4. Were certain companies hit harder than others?**
 
-The `yammer_users` table has a `company_id` column. Yammer sells to enterprise companies — if one large company had 500 users and they all went inactive, that alone could explain a significant chunk of the WAU drop. It might not be a product problem at all — it could be a single churned account.
+The `yammer_users` table has a `company_id` column. Yammer sells to enterprise companies if one large company had 500 users and they all went inactive, that alone could explain a significant chunk of the WAU drop. It might not be a product problem at all — it could be a single churned account.
 
 Checking whether the drop is distributed evenly across company IDs or concentrated in a few large accounts would either confirm the product explanation or open a completely different investigation.
 
